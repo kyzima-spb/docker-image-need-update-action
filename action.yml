@@ -13,3 +13,6 @@ outputs:
 runs:
   using: node20
   main: index.js
+branding:
+  icon: check-circle
+  color: green
