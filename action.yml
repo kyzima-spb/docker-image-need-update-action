@@ -1,0 +1,15 @@
+name: Docker Image Need Update Checker
+description: Checks if a new version of the base image exists in the Docker registry
+inputs:
+  base-image:
+    description: Docker image used in the FROM instruction
+    required: true
+  user-image:
+    description: Docker image that needs to be checked
+    required: true
+outputs:
+  result:
+    description: True if update is required, otherwise false
+runs:
+  using: node20
+  main: index.js
