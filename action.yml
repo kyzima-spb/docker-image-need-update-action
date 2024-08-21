@@ -12,7 +12,7 @@ outputs:
     description: True if update is required, otherwise false
 runs:
   using: node20
-  main: index.js
+  main: dist/index.js
 branding:
   icon: check-circle
   color: green
