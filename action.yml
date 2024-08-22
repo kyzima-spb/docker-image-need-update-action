@@ -7,6 +7,10 @@ inputs:
   user-image:
     description: Docker image that needs to be checked
     required: true
+  platforms:
+    description: List of architectures to check for
+    required: false
+    default: ''
 outputs:
   result:
     description: True if update is required, otherwise false
