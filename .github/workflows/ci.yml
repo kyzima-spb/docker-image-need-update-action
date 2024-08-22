@@ -1,13 +1,15 @@
-name: Test Action
+name: Check if the base Docker image has changed and then rebuild it
 
 on:
   push:
-    branches: ['dev-master']
+    branches:
+      - dev-master
 
 jobs:
-  test-action:
-    name: GitHub Actions Test
+  check:
     runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.check.outputs.result }}
     steps:
       - 
         name: Checkout
@@ -19,6 +21,12 @@ jobs:
         with:
           base-image: alpine:3.20
           user-image: kyzimaspb/webone
-      - 
-        name: Print Output
-        run: echo "${{ steps.check.outputs.result }}"
+  
+  build:
+    needs: check
+    if: ${{ needs.check.outputs.result }}
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Rebuild Image
+        run: echo "Need rebuild image"
