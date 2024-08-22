@@ -8,7 +8,7 @@ inputs:
     description: Docker image that needs to be checked
     required: true
   platforms:
-    description: List of architectures to check for
+    description: List of platforms used in the check
     required: false
     default: ''
 outputs:

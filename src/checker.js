@@ -85,6 +85,10 @@ function parseImageName(s) {
 
 
 async function main({ baseImage, userImage, platforms=[] }) {
+    console.log('Base image:', parseImageName(baseImage));
+    console.log('User image:', parseImageName(userImage));
+    console.log('Platforms:', platforms);
+
     const userImageTags = await Promise.all(
         await getTags({...parseImageName(userImage), platforms})
     );

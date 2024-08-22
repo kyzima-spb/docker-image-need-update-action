@@ -25019,6 +25019,10 @@ function parseImageName(s) {
 
 
 async function main({ baseImage, userImage, platforms=[] }) {
+    console.log('Base image:', parseImageName(baseImage));
+    console.log('User image:', parseImageName(userImage));
+    console.log('Platforms:', platforms);
+
     const userImageTags = await Promise.all(
         await getTags({...parseImageName(userImage), platforms})
     );
@@ -26958,10 +26962,6 @@ async function run() {
         const baseImage = core.getInput('base-image');
         const userImage = core.getInput('user-image');
         const platforms = core.getMultilineInput('platforms').map(optionsStringToObject);
-
-        console.log('Base image:', baseImage);
-        console.log('User image:', userImage);
-        console.log('Platforms:', platforms);
 
         core.setOutput('result', await main({ baseImage, userImage, platforms }));
     } catch (err) {
